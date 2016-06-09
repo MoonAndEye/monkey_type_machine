@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jun  9 11:47:33 2016
+
+
+"""
+import random as rd
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 
+            'u', 'v', 'w', 'x', 'y', 'z']
+
+rdTextLeng = rd.randint(1,45)
+
+print(rdTextLeng)
+
+m_text = []
+# m_text is monkey text, means this text was typed by a monkey.
+
+for i in range(rdTextLeng):
+    alpha = rd.choice(alphabet)
+    m_text.append(alpha)
+
+output = "".join(m_text)
+print(output)
