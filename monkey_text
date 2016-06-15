@@ -53,8 +53,9 @@ while flag < 1000000:
         alpha = rd.choice(alphabet)
         m_text.append(alpha)
         output = "".join(m_text)
+        #print(output)
         if output in target:
             target.remove(output)
-        m_text = []
-        flag = flag + 1
+    m_text = []
+    flag = flag + 1
 print ("After 1 try, string count  = " + str(len(target)) )        
