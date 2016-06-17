@@ -43,7 +43,15 @@ plt.pie(sizes,              # data
 plt.axis('equal')
 
 filename = 1
-
+left, width = .25, 1
+bottom, height = .25, 1
+right = left + width
+top = bottom + height
+plt.text(right, top, 'first try',
+        fontsize = 22,
+        horizontalalignment='right',
+        verticalalignment='top',
+        )
 #plt.show()
 plt.savefig(str(filename) + ".jpg")
 """
