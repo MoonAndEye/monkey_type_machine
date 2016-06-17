@@ -47,7 +47,7 @@ left, width = .25, 1
 bottom, height = .25, 1
 right = left + width
 top = bottom + height
-plt.text(right, top, 'first try',
+plt.text(right, top, '%.0f s' %(temp[2]),
         fontsize = 22,
         horizontalalignment='right',
         verticalalignment='top',
