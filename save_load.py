@@ -6,6 +6,8 @@ Created on Fri Jun 17 16:58:21 2016
 """
 import os
 import pandas as pd
+import random as rd
+import time
 
 
 """
@@ -39,3 +41,35 @@ last 裡面的list 就是上次還剩下的字,還沒被猴子打出來
 #print(last[0])
 #print(last[0][1:-1])
 #print(load)
+
+start_time = time.time()
+
+
+def reloadAndRun(target = [],result = []):
+    flag = 0
+    m_text = []
+    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 
+            'u', 'v', 'w', 'x', 'y', 'z']
+    rdTextLeng = rd.randint(1,14)
+    while len(target) > 0:
+        for i in range(rdTextLeng):
+            alpha = rd.choice(alphabet)
+            m_text.append(alpha)
+            output = "".join(m_text)
+        #print(output)
+            if output in target:
+                target.remove(output)
+        if flag == 500000:
+            timer = time.time() - start_time
+            newFlag = flag + result[0]
+            newTimer = timer + result[2]
+            with open("history.txt", "a", encoding = "utf-8") as f:
+                f.write(str(newFlag) + "," + str(len(target))+ ","+str(newTimer) + "\n")
+    
+            with open("remain.txt", "w", encoding = "utf-8") as rf:
+                rf.write(str(target))
+            flag = 0
+        flag = flag + 1
+
+reloadAndRun(last,load)
