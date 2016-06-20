@@ -45,31 +45,32 @@ last 裡面的list 就是上次還剩下的字,還沒被猴子打出來
 start_time = time.time()
 
 
-def reloadAndRun(target = [],result = []):
-    flag = 0
-    m_text = []
-    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+
+flag = 0
+m_text = []
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
             'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 
             'u', 'v', 'w', 'x', 'y', 'z']
-    rdTextLeng = rd.randint(1,14)
-    while len(target) > 0:
-        for i in range(rdTextLeng):
-            alpha = rd.choice(alphabet)
-            m_text.append(alpha)
-            output = "".join(m_text)
-        #print(output)
-            if output in target:
-                target.remove(output)
-        if flag == 500000:
-            timer = time.time() - start_time
-            newFlag = flag + result[0]
-            newTimer = timer + result[2]
-            with open("history.txt", "a", encoding = "utf-8") as f:
-                f.write(str(newFlag) + "," + str(len(target))+ ","+str(newTimer) + "\n")
-    
-            with open("remain.txt", "w", encoding = "utf-8") as rf:
-                rf.write(str(target))
-            flag = 0
-        flag = flag + 1
+rdTextLeng = rd.randint(1,14)
+flag = load[0]
 
-reloadAndRun(last,load)
+
+while len(last) > 0:
+    for i in range(rdTextLeng):
+        alpha = rd.choice(alphabet)
+        m_text.append(alpha)
+        output = "".join(m_text)
+        #print(output)
+        if output in last:
+            last.remove(output)
+    m_text = []
+    if flag % 500000 == 0:
+        timer_new = time.time() - start_time
+        timer = timer_new + load[2]
+        with open("history.txt", "a", encoding = "utf-8") as f:
+            f.write(str(flag) + "," + str(len(last))+ ","+str(timer) + "\n")
+    
+        with open("remain.txt", "w", encoding = "utf-8") as rf:
+            rf.write(str(last))
+    flag = flag + 1
+
