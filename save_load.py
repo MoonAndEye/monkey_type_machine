@@ -9,12 +9,6 @@ import pandas as pd
 
 
 """
-with open("remain.txt", "r", encoding="utf-8") as load_f:
-    temp = load_f.readline()
-    for each.line() in temp:
-        a.append(each)
-"""
-"""
 下面這一段,是先讀取前面的結果,打出字數,剩餘字數,使用時間
 """
 
@@ -29,5 +23,19 @@ for each in load_last:
 """
 load 這個 list 存放的，就是上一次的打出字數,剩餘字數,所花時間 
 
+下面是做出讀檔功能
 """
+
+with open("remain.txt", "r", encoding="utf-8") as load_f:
+    temp = load_f.readline()
+    temp = temp[1:-1]
+    temp = temp.replace("'", "")
+    temp = temp.replace(" ", "")
+last = temp.split(",")
+
+"""
+last 裡面的list 就是上次還剩下的字,還沒被猴子打出來
+"""
+#print(last[0])
+#print(last[0][1:-1])
 #print(load)
